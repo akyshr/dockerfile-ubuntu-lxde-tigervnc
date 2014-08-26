@@ -1,6 +1,6 @@
 
-Ubuntu Trusty Desktop(LXDE) + tigervnc + xdm
-============================================
+Ubuntu Trusty Desktop(LXDE) with tigervnc and xdm
+=================================================
 
 ###Usage 
 ````bash
