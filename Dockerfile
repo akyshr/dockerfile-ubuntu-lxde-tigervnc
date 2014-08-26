@@ -1,8 +1,7 @@
-# tigervnc-lxde desktop
-#
-# VERSION 0.5
+# ubuntu-lxde-tigervnc desktop
 
 FROM  ubuntu:14.04
+MAINTAINER akyshr "akyshr@gmail.com"
 
 # Set the env variable DEBIAN_FRONTEND to noninteractive
 ENV DEBIAN_FRONTEND noninteractive
@@ -27,6 +26,7 @@ RUN cd /tmp ; rm fuse_*.deb
 RUN cd /tmp ; echo -en '#!/bin/bash\nexit 0\n' > DEBIAN/postinst
 RUN cd /tmp ; dpkg-deb -b . /fuse.deb
 RUN cd /tmp ; dpkg -i /fuse.deb
+RUN rm -fr /tmp ; mkdir /tmp ; chmod 5777 /tmp
 #RUN apt-get install -y fuse
 
 
@@ -43,12 +43,11 @@ RUN apt-get install -y xdm
 
 # Copy the files into the container
 ADD . /src
+RUN rm /src/*~ ; true
+RUN chown -R root.root /src
 
 # install tigervnc
 RUN dpkg -i /src/packages/*.deb
-RUN chmod 5777 /tmp
-RUN chown -R root.root /src
-RUN rm /src/*~ ; true
 
 #setup ssh
 RUN mkdir /var/run/sshd
