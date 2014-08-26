@@ -4,7 +4,7 @@ Ubuntu Trusty Desktop(LXDE) with tigervnc and xdm
 
 ###Usage 
 ````bash
-docker run -d --rm -p 5900:5900 akyshr/ubuntu-lxde-tigervnc
+docker run -d -p 5900:5900 akyshr/ubuntu-lxde-tigervnc
 ````
 
 ###Account
